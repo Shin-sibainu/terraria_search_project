@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'terraria_search'
+    'terraria_search',
 ]
 
 MIDDLEWARE = [
