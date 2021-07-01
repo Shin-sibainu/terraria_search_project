@@ -39,60 +39,14 @@
     <div class="card-container">
 
       <!-- card-item -->
+      {% for parentCategory in parentCategory_data %}
       <div class="card-item">
         <a class="card-link" href="#">
-          <img class="card-img" src="http://media.arcenserv.info/w/images/Copper_Pickaxe.png" width="32" height="32">
-          <h2 class="card-tit">道具</h2>
+          <img class="card-img" src="{{parentCategory.image_url}}" width="32" height="32">
+          <h2 class="card-tit">{{parentCategory.name}}</h2>
         </a><!-- /card-content -->
       </div><!-- /card-item -->
-
-      <!-- card-item -->
-      <div class="card-item">
-        <a class="card-link" href="#">
-          <img class="card-img" src="http://media.arcenserv.info/w/images/Wooden_Sword.png" width="32" height="32">
-          <h2 class="card-tit">武器</h2>
-        </a><!-- /card-content -->
-      </div><!-- /card-item -->
-
-      <!-- card-item -->
-      <div class="card-item">
-        <a class="card-link" href="#">
-          <img class="card-img" src="http://media.arcenserv.info/w/images/Wood_Fullset_Male.png" width="26" height="44">
-          <h2 class="card-tit">防具</h2>
-        </a><!-- /card-content -->
-      </div><!-- /card-item -->
-
-      <!-- card-item -->
-      <div class="card-item">
-        <a class="card-link" href="#">
-          <img class="card-img" src="http://media.arcenserv.info/w/images/Shackle.png" alt="">
-          <h2 class="card-tit">アクセサリ</h2>
-        </a><!-- /card-content -->
-      </div><!-- /card-item -->
-
-      <!-- card-item -->
-      <div class="card-item">
-        <a class="card-link" href="#">
-          <img class="card-img" src="http://media.arcenserv.info/w/images/Lesser_Healing_Potion.png" alt="">
-          <h2 class="card-tit">ポーション</h2>
-        </a><!-- /card-content -->
-      </div><!-- /card-item -->
-
-      <!-- card-item -->
-      <div class="card-item">
-        <a class="card-link" href="#">
-          <img class="card-img" src="http://media.arcenserv.info/w/images/Acorn.png" alt="">
-          <h2 class="card-tit">雑貨</h2>
-        </a><!-- /card-content -->
-      </div><!-- /card-item -->
-
-      <!-- card-item -->
-      <div class="card-item">
-        <a class="card-link" href="#">
-          <img class="card-img" src="http://media.arcenserv.info/w/images/Dirt_Block.png"  alt="">
-          <h2 class="card-tit">ブロック類</h2>
-        </a><!-- /card-content -->
-      </div><!-- /card-item -->
+      {% endfor %}
 
     </div><!-- /card-container -->
 
