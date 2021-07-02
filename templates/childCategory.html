@@ -39,11 +39,11 @@
     <div class="card-container">
 
       <!-- card-item -->
-      {% for parentCategory in parentCategory_data %}
+      {% for category in category_data %}
       <div class="card-item">
-        <a class="card-link" href="{% url 'parentCategory' parentCategory_name=parentCategory.name %}">
-          <img class="card-img" src="{{parentCategory.image_url}}" width="16" height="16">
-          <h2 class="card-tit">{{parentCategory.name}}</h2>
+        <a class="card-link" href="{% url 'childcategory' category_name=category.name  %}">
+          <img class="card-img" src="{{category.image_url}}" width="16" height="16">
+          <h2 class="card-tit">{{category.name}}</h2>
         </a><!-- /card-content -->
       </div><!-- /card-item -->
       {% endfor %}
@@ -52,4 +52,5 @@
 
   </div><!-- /card-inner -->
 </section><!--/card-sec-->
+<h1>{{str}}</h1>
 {% endblock content %}

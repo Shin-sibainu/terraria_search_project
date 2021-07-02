@@ -50,8 +50,24 @@ for category_name_str in category_and_childCategory_names_list:
     last_word = category_name_str[len(category_name_str)-1]
     if(last_word == '器'):
         category_names_list.append(category_name_str)
+#print(category_names_list)
 
 #画像パスをスクレイピング。
 #今回は自分で好き勝手に手動でリスト作成することにする。
+category_image_urls_list = ['http://media.arcenserv.info/w/images/Platinum_Shortsword.png',
+"http://media.arcenserv.info/w/images/Musket.png", 'http://media.arcenserv.info/w/images/Crystal_Storm.png',
+"http://media.arcenserv.info/w/images/Stardust_Dragon_Staff.png", "http://media.arcenserv.info/w/images/Beenade.png",
+"http://media.arcenserv.info/w/images/Holy_Water.png"]
+
+#parentCategory_idの設定リストを作りたい。
+#idに指定できるのはParentCategoryのModelオブジェクトだけみたいね。objects.get(neme="武器")で取得できた。
+
+#連想配列作る。
+category_data_list = {}
+category_data_list['name'] = category_names_list
+category_data_list['image_url'] = category_image_urls_list
+#print(category_data_list)
+
+
         
 
