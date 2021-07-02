@@ -1,5 +1,6 @@
 body{
   background-image: url('');
+  background-color: burlywood;
 }
 
 .theme{
@@ -27,6 +28,7 @@ body{
 
 /* card_section */
 .card-sec{
+  animation: SlideIn 1.6s;
   text-align: center;
   padding-bottom: 142px;
   width: 50%;
@@ -35,21 +37,30 @@ body{
   margin-right: auto;
 }
 
+.card-inner{
+  
+}
+
 .card-item{
   width: 100%;
   max-width: 342px;
   margin: 0 auto;
   margin-bottom: 43px;
   padding: 4px 11px 4px;
-  background-color: #ffffff;
   text-align: center;
 }
 
 .card-img{
+  border-radius: 10px 10px;
+  box-shadow: 3px 3px 3px teal;
   border: none;
   vertical-align: middle;
   width: 64px;
   height: 64px;
+}
+
+.card-link{
+  
 }
 
 .card-tit{
@@ -74,4 +85,16 @@ body{
 
 a{
 text-decoration: none;
+}
+
+/* CSSアニメーションの設定 */
+@keyframes SlideIn {
+  0% {
+    opacity: 0;/*初期状態では透明に*/
+    transform: translateX(600px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

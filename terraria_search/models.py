@@ -17,11 +17,19 @@ class Category(models.Model):
   def __str__(self):
     return self.name
 
+class ChildCategory(models.Model):
+  name = models.CharField(max_length=64)
+  category_id = models.ForeignKey(Category, on_delete=CASCADE, null=True)
+
+  def __str__(self):
+      return self.name
+
 class Items(models.Model):
   name = models.CharField(max_length=255)
   image_url = models.CharField(max_length=255, null=True, blank=True)
   parentCategory_id = models.ForeignKey(ParentCategory, on_delete=CASCADE, null=True)
   category = models.ManyToManyField(Category, related_name='item')
+  childcategory = models.ManyToManyField(ChildCategory, related_name='item')
   workplace = models.CharField(max_length=255)
   needed_material = models.CharField(max_length=255)
   how_to_get = models.TextField()

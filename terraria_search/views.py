@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from .models import ParentCategory, Category, Items
-from .scriping import parentCategories
+#from .scriping import parentCategories
 
-# Create your views here.
 def homeView(request):
   domain_url = request.META.get("HTTP_HOST")
   ########
@@ -18,3 +17,12 @@ def homeView(request):
     'parentCategory_data': paretnCategory_data
   }
   return render(request, 'home.html', context)
+
+
+def categoryView(request, category_name):
+  domain_url = request.META.get("HTTP_HOST")
+
+  context = {
+    
+  }
+  return render(request, 'category.html', context)
