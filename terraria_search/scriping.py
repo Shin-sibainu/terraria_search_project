@@ -35,8 +35,8 @@ parentCategories = {}
 parentCategories['name'] = parent_category_names_list
 parentCategories['image_url'] = parent_category_image_urls_list """
 
-#################################
-#武器の子カテゴリーの名前と画像パスをスクレイピングしてみよう。
+""" #################################
+#武器のカテゴリーの名前と画像パスをスクレイピングしてみよう。
 soup = analyzeHtml('http://terraria.arcenserv.info/wiki/%E6%AD%A6%E5%99%A8')
 
 #名前をスクレイピング
@@ -66,7 +66,32 @@ category_image_urls_list = ['http://media.arcenserv.info/w/images/Platinum_Short
 category_data_list = {}
 category_data_list['name'] = category_names_list
 category_data_list['image_url'] = category_image_urls_list
-#print(category_data_list)
+print(category_data_list) """
+
+#################################
+#武器の子カテゴリーの名前をスクレイピングしてみよう(短剣、長剣、魔法剣、、)。
+soup = analyzeHtml('http://terraria.arcenserv.info/wiki/%E6%AD%A6%E5%99%A8')
+childCategory_names_li = soup.find('li')
+childCategory_name_span = childCategory_names_li.find_all('span', class_='toctext')
+
+kinnsetu_childCategory_names_list = []
+for childCategory_name in childCategory_name_span:
+    kinnsetu_childCategory_names_list.append(childCategory_name.text)
+kinnsetu_childCategory_names_list.pop(0)
+#print(kinnsetu_childCategory_names_list)
+
+#画像パスをスクレイピング。
+#今回は自分で好き勝手に手動でリスト作成することにする。
+kinnsetu_childCategory_image_urls_list = ['http://media.arcenserv.info/w/images/Gold_Shortsword.png','http://media.arcenserv.info/w/images/Muramasa.png',
+"http://media.arcenserv.info/w/images/Terra_Blade.png","http://media.arcenserv.info/w/images/Ghastly_Glaive.png",
+"http://media.arcenserv.info/w/images/Flower_Pow.png","http://media.arcenserv.info/w/images/Solar_Eruption.png",
+"http://media.arcenserv.info/w/images/Flamarang.png","http://media.arcenserv.info/w/images/Terrarian.png",
+"http://media.arcenserv.info/w/images/Vampire_Knives.png"]
+
+kinnsetu_childCategory_data_list = {}
+kinnsetu_childCategory_data_list['name'] = kinnsetu_childCategory_names_list
+kinnsetu_childCategory_data_list['image_url'] = kinnsetu_childCategory_image_urls_list
+print(kinnsetu_childCategory_data_list)
 
 
         
