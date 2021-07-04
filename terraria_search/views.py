@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import ChildCategory, ParentCategory, Category, Items
 #from .scriping import parentCategories
 #from .scriping import category_data_list
-from .scriping import kinnsetu_childCategory_data_list
+#from .scriping import kinnsetu_childCategory_data_list
 
 def homeView(request):
   domain_url = request.META.get("HTTP_HOST")
@@ -57,6 +57,11 @@ def childCategoryView(request, category_name):
   return render(request, 'childCategory.html', context) 
 
 
-def childCategoryItemsView(request):
-  domain_url = request.META.get("HTTP_HOST")
-  return render(request, 'childCategory.html', {})
+def childCategoryItemsView(request, childCategory_name):
+  ###データ格納（一度だけ）
+  item_data = Items.objects.all()
+
+  context = {
+    'item_data': item_data  
+  }
+  return render(request, 'childCategoryItem.html', context)

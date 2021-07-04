@@ -2,10 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 
 #######################################
-def analyzeHtml(url):
+""" def analyzeHtml(url):
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'html.parser')
-    return soup
+    return soup """
 #######################################
 """ url = 'http://terraria.arcenserv.info/wiki/%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0'
 r = requests.get(url) #Responseオブジェクトを返す。
@@ -68,7 +68,7 @@ category_data_list['name'] = category_names_list
 category_data_list['image_url'] = category_image_urls_list
 print(category_data_list) """
 
-#################################
+""" #################################
 #武器の子カテゴリーの名前をスクレイピングしてみよう(短剣、長剣、魔法剣、、)。
 soup = analyzeHtml('http://terraria.arcenserv.info/wiki/%E6%AD%A6%E5%99%A8')
 childCategory_names_li = soup.find('li')
@@ -91,8 +91,9 @@ kinnsetu_childCategory_image_urls_list = ['http://media.arcenserv.info/w/images/
 kinnsetu_childCategory_data_list = {}
 kinnsetu_childCategory_data_list['name'] = kinnsetu_childCategory_names_list
 kinnsetu_childCategory_data_list['image_url'] = kinnsetu_childCategory_image_urls_list
-print(kinnsetu_childCategory_data_list)
+print(kinnsetu_childCategory_data_list) """
 
+#################################
+#武器の短剣情報をスクレイピングしてみよう(銅の短剣、金の短剣)。     
 
-        
 
