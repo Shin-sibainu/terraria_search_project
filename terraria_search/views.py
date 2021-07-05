@@ -3,6 +3,7 @@ from .models import ChildCategory, ParentCategory, Category, Items
 #from .scriping import parentCategories
 #from .scriping import category_data_list
 #from .scriping import kinnsetu_childCategory_data_list
+from .scriping import items_data_list
 
 def homeView(request):
   domain_url = request.META.get("HTTP_HOST")
@@ -59,6 +60,25 @@ def childCategoryView(request, category_name):
 
 def childCategoryItemsView(request, childCategory_name):
   ###データ格納（一度だけ）
+  #parentCategoryObj = ParentCategory.objects.get(name='武器')
+  #ManytoManyFieldはモデルのインスタンスにaddしないといけないらしい。
+  #categoryObj = Category.objects.get(name='近接武器')
+  #childCategoryObj = ChildCategory.objects.get(name='短剣')
+
+  #for i in range(len(items_data_list['name'])): 
+  #  instance = Items.objects.create(
+  #  name=items_data_list['name'][i],
+  #  image_url=items_data_list['image_url'][i],
+  #  parentCategory_id=parentCategoryObj,
+    #category=categoryObj,
+    #childcategory=childCategoryObj,
+    #workplace=items_data_list['workplace'][i],
+    #needed_material=items_data_list['needed_material'][i],
+    #how_to_get=items_data_list['how_to_get'][i],
+  #  )
+  #  instance.category.add(7)#id=7番が近接武器。
+  #  instance.childcategory.add(23)#id=23番が短剣。
+  #Itemsデータを全取得
   item_data = Items.objects.all()
 
   context = {

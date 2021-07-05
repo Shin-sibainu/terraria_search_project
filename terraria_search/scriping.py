@@ -95,5 +95,59 @@ print(kinnsetu_childCategory_data_list) """
 
 #################################
 #武器の短剣情報をスクレイピングしてみよう(銅の短剣、金の短剣)。     
+#各URLをリクエストするために短剣の名前のリストを作る。
+res = requests.get('http://terraria.arcenserv.info/wiki/%E6%AD%A6%E5%99%A8')
+soup = BeautifulSoup(res.text, 'html.parser')
 
+tanken_names_for_search_table = soup.find_all('table', limit=2)
 
+tanken_table = tanken_names_for_search_table[1]#短剣のテーブルだけ抽出
+tanken_table_tr_list = tanken_table.find_all('tr')#テーブルの行の要素をリストで返す。
+print(len(tanken_table_tr_list))
+#print(tanken_table_tr_list[9].find_all('td')[1])
+
+tanken_names_list_for_search = []
+for i in range(1, len(tanken_table_tr_list)):
+    tanken_want_name_elem = tanken_table_tr_list[i].find_all('td')[1] #ここに欲しい名前が入ってる！
+    tanken_want_name_text = tanken_want_name_elem.text[:-1]
+    tanken_names_list_for_search.append(tanken_want_name_text)
+print(tanken_names_list_for_search)
+
+#tanken_names_list_for_searchに短剣で使う名前が入ってる。
+
+res_list = []
+for tanken_name_for_url in tanken_names_list_for_search:
+    res = requests.get(f'http://terraria.arcenserv.info/wiki/{tanken_name_for_url}')
+    res_list.append(res)
+
+tanken_names_list = []
+tanken_image_urls_list = []
+for i in range(len(res_list)):
+    soup = BeautifulSoup(res_list[i].text, 'html.parser')
+    tanken_item_table = soup.find('table')
+
+    th_tag = tanken_item_table.find('th')
+    image_tag = tanken_item_table.find('img')
+
+    #nameリストとimage_urlに格納していく。
+    th_tag_name = th_tag.text[:-1]#stripで末尾だけ除外した。
+    tanken_names_list.append(th_tag_name) 
+    tanken_image_urls_list.append(image_tag['src'])
+
+print(tanken_names_list)
+print(tanken_image_urls_list)
+
+###スクレイピングで用意する。
+tanken_workplace_list = ['銅の金床', '銀の金床']
+tanken_needed_material_list = ['銅×7', '銀×7']
+tanken_how_to_get = ['クラフティング', 'クラフティング']
+####
+
+#用意した連想配列にnameとimage_urlを代入していく。
+items_data_list = {}
+items_data_list['name'] = tanken_names_list
+items_data_list['image_url'] = tanken_image_urls_list
+#items_data_list['workplace'] = tanken_workplace_list
+#items_data_list['needed_material'] = tanken_needed_material_list
+#items_data_list['how_to_get'] = tanken_how_to_get
+print(items_data_list) 
