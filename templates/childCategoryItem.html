@@ -20,7 +20,7 @@
       {% for item in item_data %}
          <!-- card-item -->
       <div class="card-item">
-        <a class="card-link" href="#">
+        <a class="card-link" href="{% url 'item' item_name=item.name %}">
           <img class="card-img" src="{{item.image_url}}" width="16" height="16">
           <h2 class="card-tit">{{item.name}}</h2>
         </a><!-- /card-content -->

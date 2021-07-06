@@ -3,7 +3,7 @@ from .models import ChildCategory, ParentCategory, Category, Items
 #from .scriping import parentCategories
 #from .scriping import category_data_list
 #from .scriping import kinnsetu_childCategory_data_list
-from .scriping import items_data_list
+#from .scriping import items_data_list
 
 def homeView(request):
   domain_url = request.META.get("HTTP_HOST")
@@ -85,3 +85,10 @@ def childCategoryItemsView(request, childCategory_name):
     'item_data': item_data  
   }
   return render(request, 'childCategoryItem.html', context)
+
+def ItemView(request, item_name):
+  item_data = Items.objects.get(name=item_name)
+  context = {
+    'item_data': item_data
+  }
+  return render(request, 'item.html', context)
