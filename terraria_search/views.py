@@ -64,6 +64,7 @@ def childCategoryItemsView(request, childCategory_name):
   #ManytoManyFieldはモデルのインスタンスにaddしないといけないらしい。
   #categoryObj = Category.objects.get(name='近接武器')
   #childCategoryObj = ChildCategory.objects.get(name='短剣')
+  #ここに登録するときitem_workplaceとitem_needed_materialを登録すること。
 
   #for i in range(len(items_data_list['name'])): 
   #  instance = Items.objects.create(

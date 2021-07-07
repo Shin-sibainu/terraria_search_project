@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
-from django.db.models.fields import AutoField, NullBooleanField
+from django.db.models.fields import AutoField, NullBooleanField, related
 
 
 class ParentCategory(models.Model):
@@ -31,10 +31,9 @@ class Items(models.Model):
   parentCategory_id = models.ForeignKey(ParentCategory, on_delete=CASCADE, null=True)
   category = models.ManyToManyField(Category, related_name='item', null=True)
   childcategory = models.ManyToManyField(ChildCategory, related_name='item', null=True)
-  workplace = models.CharField(max_length=255, blank=True)
-  workplace_image_url = models.CharField(max_length=255, null=True, blank=True)
-  needed_material = models.CharField(max_length=255, blank=True)
-  needed_material_image_url = models.CharField(max_length=255, null=True, blank=True)
+  #workplaceとneeded_materialは共にItemsに入ってる。自己参照する。
+  item_workplace = models.ManyToManyField('self', null=True, related_name='item')
+  item_needed_material = models.ManyToManyField('self', null=True, related_name='item')
   how_to_get = models.TextField(blank=True)
 
   def __str__(self):

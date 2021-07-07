@@ -26,13 +26,20 @@
   <tr>
     <th>必要家具</th>
     <td>
+      {% for item in item_data.item_workplace.all %}
       <img class="card-img" src="http://media.arcenserv.info/w/images/Iron_Anvil.png" width="16" height="16">
-      {{item_data.workplace}}
+      {{item_data.name}}
+      {% endfor %}
     </td>
   </tr>
   <tr>
     <th>必要素材</th>
-    <td>{{item_data.needed_material}}</td>
+    <td>
+      {% for item in item_data.item_needed_material.all %}
+      <img class="card-img" src="{{item.image_url}}" width="16" height="16">
+      {{item.name}}
+      {% endfor %}
+    </td>
   </tr>
   <tr>
     <th>入手方法</th>
