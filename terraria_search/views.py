@@ -59,26 +59,28 @@ def childCategoryView(request, category_name):
 
 
 def childCategoryItemsView(request, childCategory_name):
-  ###データ格納（一度だけ）
+  ###アイテムデータの格納。childCategoryによって入れるデータが違う。銅の短剣だけなら特定の値を入れれば良かった。
+  ###一応nameとimage_urlは連想配列かとってこれてる。あとはitem_workplaceとitem_needed_materialをどうやってaddするかが問題。
+  ###
   #parentCategoryObj = ParentCategory.objects.get(name='武器')
   #ManytoManyFieldはモデルのインスタンスにaddしないといけないらしい。
   #categoryObj = Category.objects.get(name='近接武器')
   #childCategoryObj = ChildCategory.objects.get(name='短剣')
   #ここに登録するときitem_workplaceとitem_needed_materialを登録すること。
+  #必要な家具とか素材は1つ1つバラバラだからどうしよう。
 
   #for i in range(len(items_data_list['name'])): 
   #  instance = Items.objects.create(
   #  name=items_data_list['name'][i],
   #  image_url=items_data_list['image_url'][i],
   #  parentCategory_id=parentCategoryObj,
-    #category=categoryObj,
-    #childcategory=childCategoryObj,
-    #workplace=items_data_list['workplace'][i],
-    #needed_material=items_data_list['needed_material'][i],
-    #how_to_get=items_data_list['how_to_get'][i],
+  #　how_to_get=items_data_list['how_to_get'][i],
   #  )
   #  instance.category.add(7)#id=7番が近接武器。
   #  instance.childcategory.add(23)#id=23番が短剣。
+  ###item_workplacetとitem_needed_materialを登録する。1つには番号指定できない。
+  #  instance.item_workplace.add(items_data_list['item_workplace'][i])? これは番号を指定することになりそう。
+  #  instance.item_needed_material.add(items_data_list['item_needed_material'][i])?
   #Itemsデータを全取得
   item_data = Items.objects.all()
 

@@ -27,7 +27,7 @@
     <th>必要家具</th>
     <td>
       {% for item in item_data.item_workplace.all %}
-      <img class="card-img" src="http://media.arcenserv.info/w/images/Iron_Anvil.png" width="16" height="16">
+      <img class="card-img" src="{{item.image_url}}" width="16" height="16">
       {{item_data.name}}
       {% endfor %}
     </td>
