@@ -32,8 +32,8 @@ class Items(models.Model):
   category = models.ManyToManyField(Category, related_name='item', null=True)
   childcategory = models.ManyToManyField(ChildCategory, related_name='item', null=True)
   #workplaceとneeded_materialは共にItemsに入ってる。自己参照する。
-  item_workplace = models.ManyToManyField('self', null=True, related_name='item')
-  item_needed_material = models.ManyToManyField('self', null=True, related_name='item')
+  item_workplace = models.ManyToManyField('self', null=True, related_name='item', blank=True)
+  item_needed_material = models.ManyToManyField('self', null=True, related_name='item', blank=True)
   how_to_get = models.TextField(blank=True)
 
   def __str__(self):

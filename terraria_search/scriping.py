@@ -226,7 +226,7 @@ for i in range(0, len(tanken_workplace_list_kuuhaku)):
 print(tanken_workplace_name_list) """
 
 ###次に、必要素材を銅の短剣のページで取得してみる。
-res = requests.get('http://terraria.arcenserv.info/wiki/Copper_Shortsword')
+""" res = requests.get('http://terraria.arcenserv.info/wiki/Copper_Shortsword')
 soup = BeautifulSoup(res.text, 'html.parser')
 workplace_and_material_table = soup.find_all('table', limit=2)[1]
 material_table_tr_elem = workplace_and_material_table.find_all('tr', limit=2)[1]
@@ -240,13 +240,15 @@ tanken_material_name_list = []
 for i in range(0, len(tanken_material_name_list_kuuhaku)):
     if i%2 != 0:
         tanken_material_name_list.append(tanken_material_name_list_kuuhaku[i])
-#print(tanken_material_name_list)
+#print(tanken_material_name_list) """
 
+tanken_how_to_get = ['クラフティング', 'クラフティング', 'クラフティング', 'クラフティング', 'クラフティング'
+, 'クラフティング', 'クラフティング', 'クラフティング', 'クラフティング']
 #用意した連想配列にnameとimage_urlを代入していく。
-#items_data_list = {}
-#items_data_list['name'] = tanken_names_list
-#items_data_list['image_url'] = tanken_image_urls_list
-#items_data_list['item_workplace'] = tanken_item_workplaces_list
-#items_data_list['item_needed_material'] = tanken_item_needed_materials_list
-#items_data_list['how_to_get'] = tanken_how_to_get
+items_data_list = {}
+items_data_list['name'] = tanken_names_list
+items_data_list['image_url'] = tanken_image_urls_list
+items_data_list['item_workplace'] = tanken_item_workplaces_list
+items_data_list['item_needed_material'] = tanken_item_materials_list
+items_data_list['how_to_get'] = tanken_how_to_get
 #print(items_data_list) 

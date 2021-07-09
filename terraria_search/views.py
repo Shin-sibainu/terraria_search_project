@@ -3,7 +3,7 @@ from .models import ChildCategory, ParentCategory, Category, Items
 #from .scriping import parentCategories
 #from .scriping import category_data_list
 #from .scriping import kinnsetu_childCategory_data_list
-#from .scriping import items_data_list
+from .scriping import items_data_list
 
 def homeView(request):
   domain_url = request.META.get("HTTP_HOST")
@@ -59,28 +59,7 @@ def childCategoryView(request, category_name):
 
 
 def childCategoryItemsView(request, childCategory_name):
-  ###アイテムデータの格納。childCategoryによって入れるデータが違う。銅の短剣だけなら特定の値を入れれば良かった。
-  ###一応nameとimage_urlは連想配列かとってこれてる。あとはitem_workplaceとitem_needed_materialをどうやってaddするかが問題。
-  ###
-  #parentCategoryObj = ParentCategory.objects.get(name='武器')
-  #ManytoManyFieldはモデルのインスタンスにaddしないといけないらしい。
-  #categoryObj = Category.objects.get(name='近接武器')
-  #childCategoryObj = ChildCategory.objects.get(name='短剣')
-  #ここに登録するときitem_workplaceとitem_needed_materialを登録すること。
-  #必要な家具とか素材は1つ1つバラバラだからどうしよう。
-
-  #for i in range(len(items_data_list['name'])): 
-  #  instance = Items.objects.create(
-  #  name=items_data_list['name'][i],
-  #  image_url=items_data_list['image_url'][i],
-  #  parentCategory_id=parentCategoryObj,
-  #　how_to_get=items_data_list['how_to_get'][i],
-  #  )
-  #  instance.category.add(7)#id=7番が近接武器。
-  #  instance.childcategory.add(23)#id=23番が短剣。
-  ###item_workplacetとitem_needed_materialを登録する。1つには番号指定できない。
-  #  instance.item_workplace.add(items_data_list['item_workplace'][i])? これは番号を指定することになりそう。
-  #  instance.item_needed_material.add(items_data_list['item_needed_material'][i])?
+  
   #Itemsデータを全取得
   item_data = Items.objects.all()
 
@@ -89,9 +68,36 @@ def childCategoryItemsView(request, childCategory_name):
   }
   return render(request, 'childCategoryItem.html', context)
 
+
+
 def ItemView(request, item_name):
   item_data = Items.objects.get(name=item_name)
   context = {
     'item_data': item_data
   }
   return render(request, 'item.html', context)
+
+
+"""   ###アイテムデータの格納。childCategoryによって入れるデータが違う。銅の短剣だけなら特定の値を入れれば良かった。
+  ###一応nameとimage_urlは連想配列かとってこれてる。あとはitem_workplaceとitem_needed_materialをどうやってaddするかが問題。
+  parentCategoryObj = ParentCategory.objects.get(name='武器')
+  categoryObj = Category.objects.get(name='近接武器')
+  childcategoryObj = ChildCategory.objects.get(name='短剣')
+  #必要な素材は鉄の金床とすずの金床とか武器によって違うからここはfor文だよな。
+  item_workplaceObj= Items.objects.get(name='鉄の金床')
+  item_needed_materialObj= Items.objects.get(name='鉄の金床')
+
+  for i in range(len(items_data_list['name'])): 
+    instance = Items.objects.create(
+      name=items_data_list['name'][i],
+      image_url=items_data_list['image_url'][i],
+      parentCategory_id=parentCategoryObj,
+      how_to_get=items_data_list['how_to_get'][i]
+    )
+    #ManyToManyはaddでしか入れられない。
+    instance.category.add(categoryObj)#id=7番が近接武器。
+    instance.childcategory.add(childcategoryObj)#id=23番が短剣。
+  ###item_workplacetとitem_needed_materialを登録する。1つには番号指定できない。
+    instance.item_workplace.add(item_workplaceObj)#金床とか登録してないから番号していできない・・・。
+    instance.item_needed_material.add(item_needed_materialObj)#素材の番号とかえげつない量になるぞこれ・・・。
+    #もしかしてaddだったら元々ItemsにデータがないとダメだからUpdateで更新すればいいのかな？　 """
