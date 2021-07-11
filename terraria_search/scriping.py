@@ -10,8 +10,8 @@ from bs4 import BeautifulSoup
 """ url = 'http://terraria.arcenserv.info/wiki/%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0'
 r = requests.get(url) #Responseオブジェクトを返す。
 
-soup = BeautifulSoup(r.text, 'html.parser') """
-""" parent_category_table = soup.find('table')#カテゴリーに関連するテーブル
+soup = BeautifulSoup(r.text, 'html.parser')
+parent_category_table = soup.find('table')#カテゴリーに関連するテーブル
 
 #親カテゴリーの各名前をスクレイピング
 parent_category_names = parent_category_table.find_all('a')
@@ -66,9 +66,9 @@ category_image_urls_list = ['http://media.arcenserv.info/w/images/Platinum_Short
 category_data_list = {}
 category_data_list['name'] = category_names_list
 category_data_list['image_url'] = category_image_urls_list
-print(category_data_list) """
+print(category_data_list)
 
-""" #################################
+#################################
 #武器の子カテゴリーの名前をスクレイピングしてみよう(短剣、長剣、魔法剣、、)。
 soup = analyzeHtml('http://terraria.arcenserv.info/wiki/%E6%AD%A6%E5%99%A8')
 childCategory_names_li = soup.find('li')

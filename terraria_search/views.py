@@ -3,7 +3,7 @@ from .models import ChildCategory, ParentCategory, Category, Items
 #from .scriping import parentCategories
 #from .scriping import category_data_list
 #from .scriping import kinnsetu_childCategory_data_list
-from .scriping import items_data_list
+#from .scriping import items_data_list
 
 def homeView(request):
   domain_url = request.META.get("HTTP_HOST")
@@ -48,7 +48,7 @@ def childCategoryView(request, category_name):
   #categoryObj = Category.objects.get(name='近接武器')
   #for i in range(len(kinnsetu_childCategory_data_list['name'])):
   #  ChildCategory.objects.create(name=kinnsetu_childCategory_data_list['name'][i], image_url=kinnsetu_childCategory_data_list['image_url'][i], category_id=categoryObj)
-  #childCategory_data = Category.objects.all()
+  childCategory_data = Category.objects.all()
   childCategory_data = ChildCategory.objects.all()
 
   context = {
@@ -101,3 +101,6 @@ def ItemView(request, item_name):
     instance.item_workplace.add(item_workplaceObj)#金床とか登録してないから番号していできない・・・。
     instance.item_needed_material.add(item_needed_materialObj)#素材の番号とかえげつない量になるぞこれ・・・。
     #もしかしてaddだったら元々ItemsにデータがないとダメだからUpdateで更新すればいいのかな？　 """
+
+
+  ###今悩んでるのは必要家具と必要素材とItemのリレーション関係。N対Nだから片方入れたらもう片方も入っちゃう。
